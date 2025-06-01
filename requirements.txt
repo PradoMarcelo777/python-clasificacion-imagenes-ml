@@ -1,0 +1,11 @@
+dask[complete]
+scikit-learn
+numpy
+pillow
+joblib
+tqdm
+matplotlib
+tensorflow
+tf2onnx 
+onnx 
+onnxruntime
