@@ -6,16 +6,25 @@ covid19_xray_classifier/
 │   │   ├── COVID/
 │   │   ├── NORMAL/
 │   │   └── Viral Pneumonia/
-│   │   └── class_names.json    # Nombres de las clases usadas en el entrenamiento.
 │   └── processed/               # Imágenes redimensionadas
+│   └── class_names.json         # Nombres de las clases usadas en el entrenamiento
 ├── models/
-│   └── model.pkl                # Modelo entrenado con scikit-learn
+│   └── mobilenetv2_trained.keras # Modelo entrenado
+│   └── mobilenetv2.onnx          # Modelo aplicado ONNX
+│   └── mobilenetv2_quant.onnx    # Modelo aplicado Cuantización 8 bits
+├── reports/
+│   └── training_history.csv     # Reporte
 ├── src/
 │   ├── resize_images.py         # Script para redimensionar imágenes
-│   ├── extract_features.py      # Convertir imágenes a vectores (flatten o features)
-│   ├── train_model.py           # Entrenar modelo y guardar
-│   ├── classify_image.py        # Clasificar nueva imagen
+│   ├── 02_train_mobilenetv2.py  # Entrenar modelo
+│   ├── 03_convert_to_onnx.py    # Convertir a ONNX
+│   ├── 04_quantize_onnx.py      # Convertir con quantisize 8 bits
+│   ├── 05_run_inference_onnx.py # Realizar la predicción
 ├── requirements.txt
+├── Estructura_Indicaciones y sentencias a ejecutar.txt
+├── Grafica de precision vs tiempo de procesamiento.pbix
+├── LassoStefanie_PradoGiovanny_SingañaJosue_SistemasInformacion_9no_ParaleloA_ConcursoReporte.PDF
+├── LassoStefanie_PradoGiovanny_SingañaJosue_VideoConcursoInnovacionTecnologica_9noA.mp4
 └── README.md
 
 *********PRIMER PASO***********
