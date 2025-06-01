@@ -1,0 +1,49 @@
+********ESTRUCTURA DEL PROYECTO**********
+
+covid19_xray_classifier/
+├── data/
+│   ├── raw/                      # Imágenes originales descargadas
+│   │   ├── COVID/
+│   │   ├── NORMAL/
+│   │   └── Viral Pneumonia/
+│   │   └── class_names.json    # Nombres de las clases usadas en el entrenamiento.
+│   └── processed/               # Imágenes redimensionadas
+├── models/
+│   └── model.pkl                # Modelo entrenado con scikit-learn
+├── src/
+│   ├── resize_images.py         # Script para redimensionar imágenes
+│   ├── extract_features.py      # Convertir imágenes a vectores (flatten o features)
+│   ├── train_model.py           # Entrenar modelo y guardar
+│   ├── classify_image.py        # Clasificar nueva imagen
+├── requirements.txt
+└── README.md
+
+*********PRIMER PASO***********
+
+Se debe cargar las carpetas COVID, NORMAL,Viral Pneumonia desde el Dataset Principal COVID-19 Radiography Database
+en la carpeta raw
+
+*********SEGUNDO PASO***********
+
+Se procede a realizar la redimensión de imágenes como se indica en los pasos de ejecución en el PASO 1.
+y después se continúan ejecutando los pasos como se visualiza en el video
+
+Nota: Para una prueba se puede trabajar con 200 imágenes por carpeta solo para probar funcionamiento, ya para predecir con mejor precisión
+se debe trabajar con todo el dataset de las carpetas antes mencionadas.
+
+*********PASOS DE EJECUCION***********
+
+# Paso 1: Redimensionar imágenes
+python src/resize_images.py
+
+# Paso 2: Entrenar modelo
+python src/02_train_mobilenetv2.py
+
+# Paso 3: Convertir a ONNX
+python src/03_convert_to_onnx.py
+
+# Paso 4: Convertir con quantisize
+python src/04_quantize_onnx.py 
+
+# Paso 5: Realizar la prediccion
+python src/05_run_inference_onnx.py "data/prueba/00000002_000.png"
